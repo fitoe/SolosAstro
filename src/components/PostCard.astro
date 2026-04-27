@@ -7,7 +7,7 @@ type Props = {
 
 const { entry } = Astro.props;
 const slug = entry.id.replace(/\.(md|mdx)$/, '');
-const publishedAt = entry.data.date.toLocaleDateString('en', {
+const publishedAt = entry.data.date.toLocaleDateString('zh-CN', {
   dateStyle: 'medium',
 });
 ---
@@ -34,7 +34,7 @@ const publishedAt = entry.data.date.toLocaleDateString('en', {
       class="inline-flex items-center gap-2 text-sm font-medium text-ink transition hover:text-tintStrong"
       href={`/posts/${slug}`}
     >
-      <span>Read note</span>
+      <span>阅读文章</span>
       <span class="i-lucide:arrow-right size-4" aria-hidden="true"></span>
     </a>
   </div>

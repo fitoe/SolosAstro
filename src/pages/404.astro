@@ -4,23 +4,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   seo={{
-    description: 'The page you requested could not be found.',
+    description: '你访问的页面不存在。',
     noindex: true,
-    title: 'Page not found',
+    title: '页面不存在',
   }}
 >
   <section class="content-shell py-24 sm:py-32">
     <div class="mx-auto max-w-[40rem] space-y-6 text-center">
       <p class="text-sm uppercase tracking-[0.24em] text-muted">404</p>
-      <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Page not found</h1>
+      <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">页面不存在</h1>
       <p class="text-base leading-8 text-muted">
-        The route does not exist yet, or you removed the sample page while reshaping the template.
+        这个路由暂时不存在，或者你在整理模板时已经移除了对应的示例页面。
       </p>
       <a
         class="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition hover:translate-y-[-1px]"
         href="/"
       >
-        <span>Return home</span>
+        <span>返回首页</span>
         <span class="i-lucide:arrow-right size-4" aria-hidden="true"></span>
       </a>
     </div>

@@ -1,9 +1,9 @@
 ---
-title: Template Notes
-description: A quick overview of the choices baked into this starter.
+title: 模板说明
+description: 这篇文章简要说明这个起手模板默认内置了哪些选择。
 date: 2026-04-24
 ---
 
-SolosAstro is static-first, utility-first, and intentionally light.
+SolosAstro 默认是静态优先、utility 优先，并且刻意保持轻量。
 
-Use it as a project baseline, not as a final product shell.
+把它当成项目起点，而不是一个最终成品外壳。

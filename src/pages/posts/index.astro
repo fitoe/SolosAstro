@@ -11,17 +11,16 @@ const posts = (await getCollection('posts')).sort(
 
 <BaseLayout
   seo={{
-    description: 'Read the latest notes and starter updates.',
-    title: 'Posts',
+    description: '浏览模板自带的示例文章和默认内容路径。',
+    title: '文章',
   }}
 >
   <section class="content-shell py-16 sm:py-20">
     <div class="mb-10 max-w-[60ch] space-y-4">
-      <p class="text-sm text-muted">Content collection</p>
-      <h1 class="text-4xl font-semibold tracking-tight">Posts</h1>
+      <p class="text-sm text-muted">内容集合</p>
+      <h1 class="text-4xl font-semibold tracking-tight">文章</h1>
       <p class="text-base leading-8 text-muted">
-        This route demonstrates the default collection setup. Replace it with your own index, archive,
-        or journal listing.
+        这个页面用于展示模板默认的内容集合和列表路由。你可以把它替换成自己的索引页、归档页或博客列表。
       </p>
     </div>
 

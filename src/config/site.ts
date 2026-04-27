@@ -9,8 +9,8 @@ export type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-  description: 'A clean Astro starter for content-first sites.',
-  locale: 'en',
+  description: '一个面向内容型站点的轻量 Astro 起手模板。',
+  locale: 'zh-CN',
   siteUrl: 'https://solosastro.dev',
   social: {
     github: 'https://github.com/fitoe/SolosAstro',

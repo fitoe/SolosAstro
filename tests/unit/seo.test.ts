@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { buildSeoMetadata } from '../../src/utils/seo';
 
 const site = {
-  description: 'A clean Astro starter for content-first sites.',
+  description: '一个面向内容型站点的轻量 Astro 起手模板。',
   siteUrl: 'https://solosastro.dev',
   title: 'SolosAstro',
 };
@@ -22,15 +22,15 @@ describe('buildSeoMetadata', () => {
   it('formats inner pages as page title followed by site title', () => {
     const metadata = buildSeoMetadata({
       page: {
-        description: 'Read the latest notes and starter updates.',
-        title: 'Posts',
+        description: '浏览模板自带的示例文章和默认内容路径。',
+        title: '文章',
       },
       pathname: '/posts',
       site,
     });
 
-    expect(metadata.title).toBe('Posts | SolosAstro');
-    expect(metadata.description).toBe('Read the latest notes and starter updates.');
+    expect(metadata.title).toBe('文章 | SolosAstro');
+    expect(metadata.description).toBe('浏览模板自带的示例文章和默认内容路径。');
     expect(metadata.canonical).toBe('https://solosastro.dev/posts');
   });
 
