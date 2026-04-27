@@ -1,0 +1,20 @@
+---
+import { siteConfig } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-edge/80">
+  <div class="content-shell flex flex-col gap-3 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; {year} {siteConfig.title}. Replace this footer with your project details.</p>
+    <a
+      class="inline-flex items-center gap-2 transition hover:text-ink"
+      href={siteConfig.social.github}
+      rel="noreferrer"
+      target="_blank"
+    >
+      <span class="i-simple-icons:github size-4" aria-hidden="true"></span>
+      <span>Template repository</span>
+    </a>
+  </div>
+</footer>

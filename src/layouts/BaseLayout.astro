@@ -1,0 +1,39 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { siteConfig } from '../config/site';
+import '../styles/prose.css';
+import '../styles/theme.css';
+import { buildSeoMetadata } from '../utils/seo';
+import type { SeoInput } from '../utils/seo';
+
+type Props = {
+  seo?: SeoInput;
+};
+
+const { seo } = Astro.props;
+const metadata = buildSeoMetadata({
+  page: seo,
+  pathname: Astro.url.pathname,
+  site: siteConfig,
+});
+---
+
+<!doctype html>
+<html lang={siteConfig.locale}>
+  <head>
+    <SEOHead metadata={metadata} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="min-h-screen bg-bg text-ink antialiased">
+    <div class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(154,145,113,0.16),_transparent_38%)]">
+      <SiteHeader />
+      <main>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

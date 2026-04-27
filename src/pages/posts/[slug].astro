@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+
+  return posts.map((entry) => ({
+    params: { slug: entry.id.replace(/\.(md|mdx)$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const publishedAt = entry.data.date.toLocaleDateString('en', { dateStyle: 'long' });
+---
+
+<BaseLayout
+  seo={{
+    description: entry.data.description,
+    title: entry.data.title,
+  }}
+>
+  <article class="content-shell py-16 sm:py-20">
+    <div class="mx-auto max-w-[46rem] space-y-8">
+      <a class="inline-flex items-center gap-2 text-sm text-muted hover:text-ink" href="/posts">
+        <span class="i-lucide:arrow-left size-4" aria-hidden="true"></span>
+        <span>Back to posts</span>
+      </a>
+
+      <header class="space-y-4">
+        <p class="text-sm text-muted">{publishedAt}</p>
+        <h1 class="text-4xl font-semibold tracking-tight">{entry.data.title}</h1>
+        <p class="max-w-[60ch] text-base leading-8 text-muted">{entry.data.description}</p>
+      </header>
+
+      <div class="prose-shell">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

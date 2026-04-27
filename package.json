@@ -1,0 +1,40 @@
+{
+  "name": "solosastro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "pnpm lint && astro check",
+    "format": "eslint . --fix",
+    "lint": "eslint .",
+    "test": "pnpm test:unit && pnpm test:e2e",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "@unocss/astro": "^66.6.8",
+    "astro": "^6.1.9"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@eslint/js": "^10.0.1",
+    "@iconify-json/lucide": "^1.2.104",
+    "@iconify-json/simple-icons": "^1.2.80",
+    "@playwright/test": "^1.59.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@vitest/coverage-v8": "^4.1.5",
+    "eslint": "^10.2.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.59.0",
+    "unocss": "^66.6.8",
+    "vitest": "^4.1.5"
+  }
+}

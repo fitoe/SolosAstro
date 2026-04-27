@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+
+import PostCard from '../../components/PostCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts')).sort(
+  (left, right) => right.data.date.getTime() - left.data.date.getTime(),
+);
+---
+
+<BaseLayout
+  seo={{
+    description: 'Read the latest notes and starter updates.',
+    title: 'Posts',
+  }}
+>
+  <section class="content-shell py-16 sm:py-20">
+    <div class="mb-10 max-w-[60ch] space-y-4">
+      <p class="text-sm text-muted">Content collection</p>
+      <h1 class="text-4xl font-semibold tracking-tight">Posts</h1>
+      <p class="text-base leading-8 text-muted">
+        This route demonstrates the default collection setup. Replace it with your own index, archive,
+        or journal listing.
+      </p>
+    </div>
+
+    <div class="grid gap-5">
+      {posts.map((entry) => <PostCard entry={entry} />)}
+    </div>
+  </section>
+</BaseLayout>

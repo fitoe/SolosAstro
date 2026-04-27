@@ -1,0 +1,25 @@
+---
+import { siteConfig } from '../config/site';
+import type { ResolvedSeo } from '../utils/seo';
+
+type Props = {
+  metadata: ResolvedSeo;
+};
+
+const { metadata } = Astro.props;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<title>{metadata.title}</title>
+<meta name="description" content={metadata.description} />
+<link rel="canonical" href={metadata.canonical} />
+<meta property="og:locale" content={siteConfig.locale} />
+<meta property="og:site_name" content={siteConfig.title} />
+<meta property="og:title" content={metadata.title} />
+<meta property="og:description" content={metadata.description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={metadata.canonical} />
+{metadata.ogImage && <meta property="og:image" content={metadata.ogImage} />}
+{metadata.noindex && <meta name="robots" content="noindex, nofollow" />}

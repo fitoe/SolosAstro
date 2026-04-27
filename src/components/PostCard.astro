@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  entry: CollectionEntry<'posts'>;
+};
+
+const { entry } = Astro.props;
+const slug = entry.id.replace(/\.(md|mdx)$/, '');
+const publishedAt = entry.data.date.toLocaleDateString('en', {
+  dateStyle: 'medium',
+});
+---
+
+<article class="surface-card p-5 sm:p-6">
+  <div class="flex flex-col gap-4">
+    <div class="flex items-center gap-2 text-sm text-muted">
+      <span class="i-lucide:calendar-days size-4" aria-hidden="true"></span>
+      <time datetime={entry.data.date.toISOString()}>{publishedAt}</time>
+    </div>
+
+    <div class="space-y-3">
+      <h2 class="text-xl font-semibold tracking-tight text-ink">
+        <a class="hover:text-tintStrong" href={`/posts/${slug}`}>
+          {entry.data.title}
+        </a>
+      </h2>
+      <p class="max-w-[62ch] text-sm leading-7 text-muted">
+        {entry.data.description}
+      </p>
+    </div>
+
+    <a
+      class="inline-flex items-center gap-2 text-sm font-medium text-ink transition hover:text-tintStrong"
+      href={`/posts/${slug}`}
+    >
+      <span>Read note</span>
+      <span class="i-lucide:arrow-right size-4" aria-hidden="true"></span>
+    </a>
+  </div>
+</article>
