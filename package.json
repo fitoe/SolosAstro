@@ -2,6 +2,7 @@
   "name": "solosastro",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.24.0",
   "engines": {
     "node": ">=22.12.0"
   },

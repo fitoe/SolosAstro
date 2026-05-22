@@ -22,4 +22,8 @@ const { metadata } = Astro.props;
 <meta property="og:type" content="website" />
 <meta property="og:url" content={metadata.canonical} />
 {metadata.ogImage && <meta property="og:image" content={metadata.ogImage} />}
+<meta name="twitter:card" content={metadata.ogImage ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={metadata.title} />
+<meta name="twitter:description" content={metadata.description} />
+{metadata.ogImage && <meta name="twitter:image" content={metadata.ogImage} />}
 {metadata.noindex && <meta name="robots" content="noindex, nofollow" />}

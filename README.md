@@ -66,6 +66,14 @@ pnpm test:unit
 pnpm test:e2e
 ```
 
+说明：`pnpm dev` 默认运行在 `4399` 端口；`pnpm test:e2e` 会先执行构建，再自动用 `astro preview` 在 `4398` 端口启动测试服务。可通过 `PLAYWRIGHT_PORT=端口号 pnpm test:e2e` 临时覆盖。
+
+如果当前系统无法安装 Playwright 官方浏览器包，也可以指定已有 Chromium/Chrome 可执行文件：
+
+```bash
+PLAYWRIGHT_CHROMIUM_EXECUTABLE=/snap/bin/chromium pnpm test:e2e
+```
+
 ## 模板约定
 
 - `src/pages`：路由入口与页面组装
@@ -141,7 +149,10 @@ E2E 默认只覆盖最核心路径：
 - 首页标题默认只使用站点名
 - 其他页面标题默认采用 `页面标题 | 站点名`
 - canonical 默认按 `siteUrl + pathname` 生成
+- `ogImage` 会被规范化为绝对 URL，并同步输出 Open Graph 与 Twitter Card 标签
 - `ogImage` 仅预留字段，不默认提供动态生成能力
+
+如果需要 RSS/feed，可在具体项目中自行安装 `@astrojs/rss` 并新增 `src/pages/rss.xml.ts`。模板默认不内置 RSS，以避免把最小起点变成完整博客框架。
 
 ## 首次替换项
 
@@ -162,6 +173,15 @@ E2E 默认只覆盖最核心路径：
 3. 修改首页 Hero 文案
 4. 更新页头页脚中的 GitHub 链接
 5. 替换 favicon
+
+上线前建议再确认：
+
+- `siteConfig.siteUrl` 已替换为真实域名
+- `siteConfig.social.github` 已指向当前项目或已移除相关入口
+- 示例文章已经替换或删除
+- favicon 已替换
+- 如使用预览域名，已根据需要设置 `noindex` 或调整 `robots.txt`
+- 已执行 `pnpm check`、`pnpm build`、`pnpm test`
 
 ## 目录结构
 

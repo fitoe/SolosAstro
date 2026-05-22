@@ -48,4 +48,17 @@ describe('buildSeoMetadata', () => {
     expect(metadata.canonical).toBe('https://preview.solosastro.dev/posts');
     expect(metadata.noindex).toBe(true);
   });
+
+  it('normalizes relative Open Graph image URLs', () => {
+    const metadata = buildSeoMetadata({
+      page: {
+        ogImage: '/og.png',
+        title: 'Open Graph',
+      },
+      pathname: '/posts',
+      site,
+    });
+
+    expect(metadata.ogImage).toBe('https://solosastro.dev/og.png');
+  });
 });

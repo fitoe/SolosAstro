@@ -34,6 +34,14 @@ function resolveTitle(pathname: string, site: SeoSite, page?: SeoInput) {
   return `${page.title} | ${site.title}`;
 }
 
+function resolveOptionalUrl(value: string | undefined, siteUrl: string) {
+  if (!value) {
+    return undefined;
+  }
+
+  return new URL(value, siteUrl).toString();
+}
+
 export function buildSeoMetadata({ page, pathname, site }: BuildSeoOptions): ResolvedSeo {
   const canonical = page?.canonical ?? new URL(pathname, site.siteUrl).toString();
 
@@ -41,7 +49,7 @@ export function buildSeoMetadata({ page, pathname, site }: BuildSeoOptions): Res
     canonical,
     description: page?.description ?? site.description,
     noindex: page?.noindex ?? false,
-    ogImage: page?.ogImage,
+    ogImage: resolveOptionalUrl(page?.ogImage, site.siteUrl),
     title: resolveTitle(pathname, site, page),
   };
 }

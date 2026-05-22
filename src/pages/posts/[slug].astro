@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../config/site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const publishedAt = entry.data.date.toLocaleDateString('zh-CN', { dateStyle: 'long' });
+const publishedAt = entry.data.date.toLocaleDateString(siteConfig.locale, { dateStyle: 'long' });
 ---
 
 <BaseLayout

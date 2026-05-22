@@ -1,13 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
+import { siteConfig } from '../config/site';
+
 type Props = {
   entry: CollectionEntry<'posts'>;
 };
 
 const { entry } = Astro.props;
 const slug = entry.id.replace(/\.(md|mdx)$/, '');
-const publishedAt = entry.data.date.toLocaleDateString('zh-CN', {
+const publishedAt = entry.data.date.toLocaleDateString(siteConfig.locale, {
   dateStyle: 'medium',
 });
 ---
